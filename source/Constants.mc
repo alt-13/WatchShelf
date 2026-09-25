@@ -41,8 +41,6 @@ module Store {
     // them, which is a lockout, not an inconvenience.
     const PROXY_NAME  = "proxyHdrName";
     const PROXY_VALUE = "proxyHdrValue";
-    // Sleep timer minutes (Number, 0 = off), see SleepTimer.mc.
-    const SLEEP_MINUTES = "sleepMin";
 
     // Two-way play-progress state, O(books): one small dictionary keyed by
     // itemId (never per-chunk - see the OOM post-mortem above). See Progress.mc
@@ -75,6 +73,7 @@ module Settings {
     const API_KEY     = "absApiKey";     // ABS long-lived API key, used as Bearer token
     const PROXY_NAME  = "absProxyHeader";  // e.g. "X-Client-Authentication"
     const PROXY_VALUE = "absProxySecret";  // the shared secret the proxy checks
+    const SLEEP_MINUTES = "sleepMinutes";  // sleep timer, 0 = off (SleepTimer.mc)
 }
 
 // Bump `current` whenever the stored data shape changes so stale caches reset.

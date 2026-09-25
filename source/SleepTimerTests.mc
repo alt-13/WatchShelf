@@ -1,3 +1,4 @@
+using Toybox.Application;
 using Toybox.Test;
 
 (:test)
@@ -17,5 +18,16 @@ function sleepTimerFiresOnce(logger) {
     Test.assert(!SleepTimer.fire());
     Test.assert(SleepTimer.deadline == null);
     logger.debug("expiry stops one part, then playback continues normally");
+    return true;
+}
+
+(:test)
+function sleepTimerMinutesUsePhoneProperty(logger) {
+    SleepTimer.setMinutes(30);
+    Test.assertEqual(Application.Properties.getValue(Settings.SLEEP_MINUTES), 30);
+    Test.assertEqual(SleepTimer.minutes(), 30);
+    SleepTimer.setMinutes(0);
+    Test.assertEqual(SleepTimer.minutes(), 0);
+    logger.debug("watch menu and phone settings share one property");
     return true;
 }

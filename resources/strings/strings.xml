@@ -68,6 +68,9 @@
     <!-- sleep timer (issue #77), see SleepTimer.mc -->
     <string id="sleepTimer">Sleep timer</string>
     <string id="sleepOff">Off</string>
+    <string id="sleep15">15 min</string>
+    <string id="sleep30">30 min</string>
+    <string id="sleep60">1 hour</string>
 
     <!-- progress-conflict diagnostic (issue #61); only shown if it ever fires -->
     <string id="progressConflicts">Progress conflicts</string>

@@ -8,19 +8,19 @@ using Toybox.WatchUi;
 // for falling asleep. The deadline lives in memory only - a fresh playback
 // session (new ContentDelegate) re-arms it from the chosen minutes.
 module SleepTimer {
-    // Minutes offered in the picker; 0 = off. One list so the picker and
-    // label() can never disagree.
+    // Minutes offered in the picker; 0 = off. Must match the listEntry
+    // values in settings.xml (phone), which edits the same property.
     const ALL = [ 0, 15, 30, 60 ];
 
     var deadline = null; // epoch seconds, null = not armed
 
     function minutes() {
-        var m = Application.Storage.getValue(Store.SLEEP_MINUTES);
+        var m = Application.Properties.getValue(Settings.SLEEP_MINUTES);
         return (m instanceof Toybox.Lang.Number) ? m : 0;
     }
 
     function setMinutes(m) {
-        Application.Storage.setValue(Store.SLEEP_MINUTES, m);
+        Application.Properties.setValue(Settings.SLEEP_MINUTES, m);
     }
 
     function label(m) {
