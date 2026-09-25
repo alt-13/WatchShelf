@@ -15,7 +15,7 @@ function sleepTimerFiresOnce(logger) {
     SleepTimer.deadline = 1;
     Test.assert(SleepTimer.fire());
     Test.assert(!SleepTimer.fire());
-    Test.assertEqual(SleepTimer.deadline, null);
+    Test.assert(SleepTimer.deadline == null);
     logger.debug("expiry stops one part, then playback continues normally");
     return true;
 }
