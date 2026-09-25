@@ -31,6 +31,9 @@ class BookActionMenu extends WatchUi.Menu2 {
         // back to it instant. See BookStore's variant layer.
         addItem(new WatchUi.MenuItem(WatchUi.loadResource(Rez.Strings.playbackSpeed),
             PlaybackSpeed.label(BookStore.activeSpeed(itemId)), "speed", null));
+        // Global, not per-book: it is about tonight, not about this book.
+        addItem(new WatchUi.MenuItem(WatchUi.loadResource(Rez.Strings.sleepTimer),
+            SleepTimer.label(SleepTimer.minutes()), "sleep", null));
         addItem(new WatchUi.MenuItem(WatchUi.loadResource(Rez.Strings.deleteBook), null, "delete", null));
     }
 }
@@ -123,6 +126,16 @@ class BookActionMenuDelegate extends WatchUi.Menu2InputDelegate {
         if ((id instanceof Toybox.Lang.String) && id.equals("speed")) {
             WatchUi.pushView(new BookSpeedChoiceMenu(mItemId),
                 new BookSpeedChoiceDelegate(mItemId), WatchUi.SLIDE_LEFT);
+            return;
+        }
+
+        // Cycle Off -> 15 -> 30 -> 60 -> Off in place; no sub-menu needed.
+        if ((id instanceof Toybox.Lang.String) && id.equals("sleep")) {
+            var i = SleepTimer.ALL.indexOf(SleepTimer.minutes());
+            var m = SleepTimer.ALL[(i + 1) % SleepTimer.ALL.size()];
+            SleepTimer.setMinutes(m);
+            item.setSubLabel(SleepTimer.label(m));
+            WatchUi.requestUpdate();
             return;
         }
 

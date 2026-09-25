@@ -65,6 +65,10 @@
     <string id="speedSwitched">Speed changed</string>
     <string id="confirmSpeedFetch">Not on watch.\nDownload at this speed?</string>
 
+    <!-- sleep timer (issue #77), see SleepTimer.mc -->
+    <string id="sleepTimer">Sleep timer</string>
+    <string id="sleepOff">Off</string>
+
     <!-- progress-conflict diagnostic (issue #61); only shown if it ever fires -->
     <string id="progressConflicts">Progress conflicts</string>
 

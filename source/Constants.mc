@@ -41,6 +41,8 @@ module Store {
     // them, which is a lockout, not an inconvenience.
     const PROXY_NAME  = "proxyHdrName";
     const PROXY_VALUE = "proxyHdrValue";
+    // Sleep timer minutes (Number, 0 = off), see SleepTimer.mc.
+    const SLEEP_MINUTES = "sleepMin";
 
     // Two-way play-progress state, O(books): one small dictionary keyed by
     // itemId (never per-chunk - see the OOM post-mortem above). See Progress.mc
